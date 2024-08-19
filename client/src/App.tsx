@@ -7,6 +7,11 @@ import WishPage from "./components/Pages/Wish/WishPage";
 import Catalog from "./components/Pages/Catalog/Catalog";
 import CatalogCategory from "./components/Pages/CatalogCategory/CatalogCategory";
 import Details from "./components/Pages/Details/Details";
+import Profile from "./components/Pages/Profile/Profile";
+import AuthPage from "./components/Pages/Auth/AuthPage";
+import Register from "./components/Pages/Register/Register";
+import AuthComponent from "./HOC/AuthComponent";
+import ChangePassword from "./components/Pages/ChangePassword/ChangePassword";
 
 function App() {
   return (
@@ -23,6 +28,15 @@ function App() {
               <Route path=":detailItem" element={<Details />}></Route>
             </Route>
           </Route>
+          <Route path="/profile">
+            <Route index element={<AuthComponent><Profile /></AuthComponent>} />
+            <Route path="/profile/change-password" element={<AuthComponent><ChangePassword /></AuthComponent>} />
+
+          </Route>
+          
+          <Route path="/login" element={<AuthPage />} />
+          <Route path="/register" element={<Register />} />
+
           <Route path="*" element={<div>Not found</div>} />
         </Routes>
       </div>

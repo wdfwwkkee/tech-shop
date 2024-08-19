@@ -1,3 +1,4 @@
+import { IsOptional } from "class-validator";
 import {
   Column,
   CreateDateColumn,
@@ -13,6 +14,11 @@ export class User {
 
   @Column()
   email: string;
+
+
+  @Column({ nullable: true })
+  @IsOptional()
+  username?: string | null; 
 
   @Column()
   password: string;

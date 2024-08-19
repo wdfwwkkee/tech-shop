@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';import * as styled from "./header.style";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import * as styled from "./header.style";
 import Badge from "@mui/material/Badge";
 import { color } from "../../../assets/colors/colors";
 import { useAppSelector } from "../../../hooks/useAppSelector";
+import { useAuth } from "../../../hooks/useAuth";
 
 const Header = () => {
   const cartLength = useAppSelector((state) => state.cart).length;
+  const { isAuth, email, username } = useAuth();
 
   return (
     <styled.Header>
@@ -123,7 +126,7 @@ const Header = () => {
               />
             </svg>
           </div>
-          <div className="text">Профиль</div>
+          <div className="text">{isAuth ? username ? username : email : "Профиль"}</div>
         </Link>
       </styled.Actions>
     </styled.Header>

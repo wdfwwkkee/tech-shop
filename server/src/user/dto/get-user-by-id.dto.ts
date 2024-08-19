@@ -1,7 +1,7 @@
 
 export class getUserById {
 
-    id : number;
+    id : number | null;
 
 
 }

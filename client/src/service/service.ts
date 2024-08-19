@@ -3,6 +3,7 @@ import { Category } from "../types/Category";
 import { firstLetterToUppercase } from "../utils/firstLetterToUppercase";
 
 export const AppService = {
+
   async getAllItems() {
     const data = await axios.get("http://localhost:3002/api/catalog");
     return data.data;
@@ -42,4 +43,8 @@ export const AppService = {
     );
     return category;
   },
+  async changeUsername(id : number, username : string) {
+    const responce = await axios.patch(`http://localhost:3002/api/user/${+id}`, {username : username})
+    return responce;
+  }
 };
