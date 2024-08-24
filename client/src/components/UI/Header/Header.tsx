@@ -101,7 +101,7 @@ const Header = () => {
           </div>
           <div className="text">Корзина</div>
         </Link>
-        <Link to={isAuth ? "/profile" : "login"} className="action-item">
+        <Link to={isAuth ? "/profile" : "/login"} className="action-item">
           <div className="icon">
             <svg
               width="22"
