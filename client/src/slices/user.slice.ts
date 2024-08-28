@@ -3,7 +3,7 @@ import { IUser } from "../types/User";
 
 function loadFromLocalStorage() {
   const user = localStorage.getItem("user");
-  return user ? JSON.parse(user) : { email: "", token: "", id: null };
+  return user ? JSON.parse(user) : { email: "", token: "", id: null, avatar : null };
 }
 
 function saveLocalStorage(state: IUser) {
@@ -25,13 +25,18 @@ export const UserSlice = createSlice({
       return newState;
     },
     changeName(state: IUser, action: PayloadAction<string>) {
-      const newState = {...state, username : action.payload}
+      const newState = { ...state, username: action.payload };
       saveLocalStorage(newState);
       return newState;
-    }
+    },
+    uploadAvatar(state: IUser, action: PayloadAction<string>) {
+      const newState = { ...state, avatar: action.payload };
+      saveLocalStorage(newState);
+      return newState;
+    },
   },
 });
 
-export const { login, logout,changeName } = UserSlice.actions;
+export const { login, logout, changeName,uploadAvatar } = UserSlice.actions;
 
 export const UserReducer = UserSlice.reducer;

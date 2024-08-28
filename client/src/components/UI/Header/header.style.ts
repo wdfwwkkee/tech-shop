@@ -34,4 +34,10 @@ export const Actions = styled.div`
     }
     text-align: center;
   }
+  .avatar {
+    width : 50px;
+    object-fit : cover;
+    height : 50px;
+    border-radius : 50%;
+  }
 `;

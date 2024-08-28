@@ -3,7 +3,6 @@ import { Category } from "../types/Category";
 import { firstLetterToUppercase } from "../utils/firstLetterToUppercase";
 
 export const AppService = {
-
   async getAllItems() {
     const data = await axios.get("http://localhost:3002/api/catalog");
     return data.data;
@@ -37,14 +36,26 @@ export const AppService = {
     return resp.data;
   },
   async getCategoryOnlyNames() {
-    const data = await axios.get("http://localhost:3002/api/catalog/get-category");
+    const data = await axios.get(
+      "http://localhost:3002/api/catalog/get-category"
+    );
     const category = Object.values<Category>(data.data).map(
       (item) => item.name
     );
     return category;
   },
-  async changeUsername(id : number, username : string) {
-    const responce = await axios.patch(`http://localhost:3002/api/user/${+id}`, {username : username})
+  async changeUsername(id: number, username: string) {
+    const responce = await axios.patch(
+      `http://localhost:3002/api/user/${+id}`,
+      { username: username }
+    );
     return responce;
-  }
+  },
+  async uploadAvatar(id: number, avatar: FormData) {
+    const response = await axios.patch(
+      `http://localhost:3002/api/user/${+id}/uploadAvatar`,
+      avatar
+    );
+    return response;
+  },
 };

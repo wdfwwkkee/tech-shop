@@ -35,12 +35,14 @@ const AuthPage = () => {
           password: data.password,
         }
       );
+      console.log(responce)
       dispatch(
         login({
           token: responce.data.token,
           email: responce.data.email,
           id: responce.data.id,
           username : responce.data.username,
+          avatar : responce.data.avatar,
         })
       );
       notify("✔ successfully");

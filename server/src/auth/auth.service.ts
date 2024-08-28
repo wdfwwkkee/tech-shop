@@ -20,11 +20,13 @@ export class AuthService {
     throw new BadRequestException("Email or password are incorrect");
   }
   async login(user: IUser) {
-    const { id, email, username } = user;
+    const { id, email, username, cart, avatar } = user;
     return {
       id,
       email,
+      cart,
       username,
+      avatar,
       token: this.jwtService.sign({ id: user.id, email: user.email }),
     };
   }
